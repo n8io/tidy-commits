@@ -1,0 +1,39 @@
+{
+  "name": "jest-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "precommit": "lint-staged",
+    "lint": "(eslint ./src/**/*.js && yarn -s msg_lint_pass) || yarn -s msg_lint_fail",
+    "prettier:base": "prettier --single-quote --trailing-comma all --print-width 120 './src/**/!(registerServiceWorker).js'",
+    "prettier:ci": "(yarn -s prettier:base --list-different && yarn -s msg_prettier_pass) || yarn -s msg_prettier_fail",
+    "prettier:fix": "yarn -s prettier:base --write && yarn -s msg_prettier_fixd",
+    "msg_lint_fail": "FAIL='\\033[0;31m'; CYAN='\\033[0;36m'; NC='\\033[0m'; echo \"${FAIL}𝗫${NC} ${CYAN}LINT_CHECK${NC}: The file(s) listed above failed linting 👎. Fix them and try again.\" && exit 1",
+    "msg_lint_pass": "PASS='\\033[0;32m'; CYAN='\\033[0;36m'; NC='\\033[0m'; echo \"${PASS}✔${NC} ${CYAN}LINT_CHECK${NC}: All files passed linting 👔.\"",
+    "msg_prettier_fail": "FAIL='\\033[0;31m'; CYAN='\\033[0;36m'; NC='\\033[0m'; echo \"\\n${FAIL}𝗫${NC} ${CYAN}PRETTIER_CHECK${NC}: The file(s) listed above are ugly 🙁. Give them a makeover and try again.\" && exit 1",
+    "msg_prettier_pass": "PASS='\\033[0;32m'; CYAN='\\033[0;36m'; NC='\\033[0m'; echo \"${PASS}✔${NC} ${CYAN}PRETTIER_CHECK${NC}: All files were verified as pretty 💅.\"",
+    "msg_prettier_fixd": "echo \"All files are now pretty 😍.\"",
+    "tidy": "yarn -s lint && CI=true; yarn -s prettier:ci",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "lint-staged": {
+    "*.js": [
+      "yarn -s lint",
+      "yarn -s prettier:fix",
+      "git add"
+    ]
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0",
+    "jest": "^21.2.1",
+    "prettier": "^1.9.2"
+  }
+}
