@@ -20,7 +20,7 @@
     "test:watch": "jest --watch"
   },
   "lint-staged": {
-    "*.js[x]?": [
+    "*.js": [
       "yarn -s lint",
       "yarn -s prettier:fix",
       "git add"
