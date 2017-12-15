@@ -1,4 +1,4 @@
-import { add, subtract } from './math';
+import { add, subtract, multiply } from './math';
 
 test(`Expect add(1, 2) to equal 3`, () => {
   const inputs = [1, 2];
@@ -204,6 +204,38 @@ test(`Expect subtract('') to equal 0`, () => {
   const inputs = [''];
   const expected = 0;
   const actual = subtract(...inputs);
+
+  expect(actual).toBe(expected);
+});
+
+test(`Expect multiply(3,3) to equal 9`, () => {
+  const inputs = [3, 3];
+  const expected = 9;
+  const actual = multiply(...inputs);
+
+  expect(actual).toBe(expected);
+});
+
+test(`Expect multiply(3) to equal 0`, () => {
+  const inputs = [3];
+  const expected = 0;
+  const actual = multiply(...inputs);
+
+  expect(actual).toBe(expected);
+});
+
+test(`Expect multiply(1,2,3) to equal 6`, () => {
+  const inputs = [1, 2, 3];
+  const expected = 6;
+  const actual = multiply(...inputs);
+
+  expect(actual).toBe(expected);
+});
+
+test(`Expect multiply() to equal 0`, () => {
+  const inputs = [];
+  const expected = 0;
+  const actual = multiply(...inputs);
 
   expect(actual).toBe(expected);
 });

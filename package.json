@@ -1,5 +1,6 @@
 {
-  "name": "jest-test",
+  "name": "tidy-commits",
+  "description": "A simple repo to demonstrate Prettier, linting, lint-staged, and Jest",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
